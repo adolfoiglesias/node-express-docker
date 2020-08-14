@@ -5,7 +5,7 @@ services:
     - docker
 
 before_install:
-    - docker build -t amich05/node-app -f Dockerfile.dev .
+    - docker build -t amich05/node-app -f Dockerfile.test .
     
 script:
-    - docker run -e CI=true amich05/node-app -- --coverage
+    - docker run amich05/node-app
