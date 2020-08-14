@@ -1,0 +1,11 @@
+language: generic
+
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t amich05/node-app -f Dockerfile.dev .
+    
+script:
+    - docker run -e CI=true amich05/node-app -- --coverage
