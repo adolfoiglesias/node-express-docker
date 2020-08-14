@@ -1,0 +1,37 @@
+# Specify a base image
+#FROM node:alpine
+FROM node:12-alpine3.12
+
+WORKDIR /usr/app
+
+# Copy source 
+COPY ./package.json ./
+# Install some dependencies
+RUN npm install
+
+COPY ./ ./
+
+
+# Default command
+CMD [ "npm", "run" , "test"] 
+
+
+# For build the image
+   # docker build . -t amich05/mern-template
+
+# For run the docker image
+   # docker run -p <incoming port>:<inside port> <image-name>
+   # docker run -p 4000:4000 amich05/mern-template
+
+
+# for enter to container and see the directory
+    # docker run -it amich05/mern-template sh
+    # docker exce -it <container-id> sh
+    # we can see the <container-id> calling "docker ps" -> show all running container
+
+# To see the running container
+   # docker ps
+
+   # For ingnore copy some files o folder use 
+        # Create .dockerignore file and write the folder to ingnore
+        # https://docs.docker.com/engine/reference/builder/#dockerignore-file
